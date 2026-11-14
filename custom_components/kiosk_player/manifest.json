@@ -1,0 +1,12 @@
+{
+  "domain": "kiosk_player",
+  "name": "Kiosk Player",
+  "codeowners": ["@hybrid87sg"],
+  "config_flow": true,
+  "documentation": "https://github.com/hybrid87sg/kiosk-player-ha",
+  "integration_type": "hub",
+  "iot_class": "local_push",
+  "issue_tracker": "https://github.com/hybrid87sg/kiosk-player-ha/issues",
+  "requirements": [],
+  "version": "0.1.0"
+}

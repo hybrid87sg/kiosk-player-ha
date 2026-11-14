@@ -1,0 +1,21 @@
+play_playlist:
+  fields:
+    device_id:
+      required: true
+      selector:
+        device:
+          integration: kiosk_player
+          multiple: true
+    playlist:
+      required: true
+      example: "Automatic"
+      selector:
+        text:
+refresh_player:
+  fields:
+    device_id:
+      required: true
+      selector:
+        device:
+          integration: kiosk_player
+          multiple: true

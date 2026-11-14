@@ -1,0 +1,22 @@
+# Checks the integration the way Home Assistant (hassfest) and HACS do.
+# The code is developed in hybrid87sg/kiosk-player; this repository holds published copies.
+name: Validate
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  hassfest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: home-assistant/actions/hassfest@master
+  hacs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: hacs/action@main
+        with:
+          category: integration
+          ignore: brands

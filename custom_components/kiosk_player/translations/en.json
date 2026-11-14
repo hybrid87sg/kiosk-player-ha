@@ -1,0 +1,135 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Pair with the main Kiosk server",
+        "description": "Make a pairing code on the main Kiosk server: Settings → Home Assistant Relays → Add relay (or Pairing code). The code works once and for 10 minutes.",
+        "data": {
+          "url": "Main Kiosk server address",
+          "pairing_code": "Pairing code"
+        },
+        "data_description": {
+          "url": "Its Tailscale address, e.g. 100.101.102.103 (port 3000 is assumed).",
+          "pairing_code": "Ten letters and numbers, e.g. ABCDE-23456. Upper or lower case, with or without the dash."
+        }
+      },
+      "reauth_confirm": {
+        "title": "Pair {relay} again",
+        "description": "The main Kiosk server no longer accepts this relay's credential (it was revoked, or the relay was disabled). Make a new pairing code there (Settings → Home Assistant Relays → New pairing code) and enter it here.",
+        "data": {
+          "pairing_code": "Pairing code"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Can't reach the main Kiosk server at that address. Check the address and that Tailscale is running at both sites.",
+      "invalid_code": "That pairing code isn't valid: it may be mistyped, already used, or more than 10 minutes old. Make a new one on the main server.",
+      "relay_disabled": "This relay is disabled on the main Kiosk server. Enable it there first.",
+      "too_many_attempts": "Too many pairing attempts. Wait a minute and try again.",
+      "unknown": "Unexpected error. Check the Home Assistant log."
+    },
+    "abort": {
+      "already_configured": "This relay is already set up.",
+      "reauth_successful": "Paired again.",
+      "wrong_relay": "That code is for a different relay than this one."
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "online": {
+        "name": "Online"
+      },
+      "server_connected": {
+        "name": "Main server connected"
+      }
+    },
+    "button": {
+      "refresh": {
+        "name": "Refresh"
+      }
+    },
+    "select": {
+      "playlist_select": {
+        "name": "Playlist choice"
+      }
+    },
+    "sensor": {
+      "playlist": {
+        "name": "Playlist"
+      },
+      "current_file": {
+        "name": "Playing"
+      },
+      "last_seen": {
+        "name": "Last seen"
+      },
+      "free_storage": {
+        "name": "Free storage"
+      },
+      "app_version": {
+        "name": "App version"
+      },
+      "playback_error": {
+        "name": "Playback problem"
+      },
+      "players_online": {
+        "name": "Screens online"
+      },
+      "players_offline": {
+        "name": "Screens offline"
+      },
+      "last_message": {
+        "name": "Last message from main server"
+      }
+    }
+  },
+  "exceptions": {
+    "unknown_playlist": {
+      "message": "{player} has no playlist called \"{playlist}\". Use Automatic or a playlist of its location."
+    },
+    "ambiguous_playlist": {
+      "message": "{player} has more than one playlist called \"{playlist}\". Use its number instead."
+    },
+    "not_this_relays": {
+      "message": "{player} isn't one of this relay's screens on the main Kiosk server any more."
+    },
+    "command_rejected": {
+      "message": "The main Kiosk server refused that for {player}: {reason}"
+    },
+    "auth_failed": {
+      "message": "The main Kiosk server no longer accepts this relay's credential. Pair it again (Settings → Devices & services → Kiosk Player)."
+    },
+    "server_error": {
+      "message": "The main Kiosk server couldn't do that: {reason}"
+    },
+    "not_a_screen": {
+      "message": "Device {device} isn't a Kiosk screen of a loaded Kiosk Player relay."
+    }
+  },
+  "services": {
+    "play_playlist": {
+      "name": "Play playlist",
+      "description": "Changes which playlist the screens play. The TVs pick it up within a minute.",
+      "fields": {
+        "device_id": {
+          "name": "Screens",
+          "description": "The Kiosk screens (their devices) to change."
+        },
+        "playlist": {
+          "name": "Playlist",
+          "description": "Automatic (the location's Landscape or Portrait playlist), or the name or number of one of the location's playlists."
+        }
+      }
+    },
+    "refresh_player": {
+      "name": "Refresh screen",
+      "description": "Makes the screens fetch their playlist again at their next check-in (within a minute).",
+      "fields": {
+        "device_id": {
+          "name": "Screens",
+          "description": "The Kiosk screens (their devices) to refresh."
+        }
+      }
+    }
+  }
+}

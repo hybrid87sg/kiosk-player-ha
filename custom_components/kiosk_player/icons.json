@@ -1,0 +1,18 @@
+{
+  "entity": {
+    "sensor": {
+      "playlist": { "default": "mdi:playlist-play" },
+      "current_file": { "default": "mdi:file-video" },
+      "app_version": { "default": "mdi:information-outline" },
+      "playback_error": { "default": "mdi:alert-circle-outline" },
+      "players_online": { "default": "mdi:television" },
+      "players_offline": { "default": "mdi:television-off" }
+    },
+    "button": { "refresh": { "default": "mdi:refresh" } },
+    "select": { "playlist_select": { "default": "mdi:playlist-edit" } }
+  },
+  "services": {
+    "play_playlist": { "service": "mdi:playlist-play" },
+    "refresh_player": { "service": "mdi:refresh" }
+  }
+}
