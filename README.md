@@ -45,6 +45,11 @@ TVs check in about once a minute, so a change reaches the screen within a minute
 The same code also pairs this site's Kiosk add-on (relay mode): put it in the add-on's
 **Pairing code** option.
 
+## Examples
+
+Evening playlists, a promo button, offline alerts and more:
+[docs/ha-examples.md](https://github.com/hybrid87sg/kiosk-player/blob/main/docs/ha-examples.md).
+
 ## If the main server stops accepting this relay
 
 If its credential is revoked or the relay is disabled on the main server, Home Assistant shows
